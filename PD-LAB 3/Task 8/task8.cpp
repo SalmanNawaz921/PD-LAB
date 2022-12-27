@@ -30,11 +30,12 @@ using namespace std;
 
   priceOfFruits= fruitsPerKilo * totalKilosOfFruits;
 
-  fPriceOfVeggies= priceOfVeggies * rp;
-  fPriceOfFruits=  priceOfFruits * rp;
+  fPriceOfVeggies= priceOfVeggies/rp;
+  fPriceOfFruits=  priceOfFruits/rp;
 
  cout<<"Price Of Vegetable In RPS: "<<fPriceOfVeggies<<endl;
  cout<<"Price Of Fruits In RPS: "<<fPriceOfFruits<<endl;
+ cout<<"Total Earnings: "<<fPriceOfVeggies+fPriceOfFruits<<endl;
 
  return 0;
 
