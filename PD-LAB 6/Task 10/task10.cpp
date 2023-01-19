@@ -5,8 +5,8 @@ using namespace std;
 void printMaze();
 void gotoxy(int x, int y);
 char getCharacter(short int x, short int y);
-void printPacman(int x , int y);
-void remove (int x , int y);
+void printPacman(int x, int y);
+void remove(int x, int y);
 void clear(int x, int y, char pCharacter);
 void ghost1(int x, int y);
 
@@ -16,6 +16,7 @@ main()
     int x = 4, y = 4;
     int gx = 2, gy = 2;
     int g1x = 3, g1y = 3;
+    int score = 0;
 
     char pCharacter = ' ';
     string direction = "RIGHT";
@@ -24,12 +25,13 @@ main()
     system("cls");
 
     bool gameRunning = true;
+    cout << "SCORE : " << score;
     printMaze();
     ghost1(gx, gy);
     char nextPosition;
     while (gameRunning)
     {
-         
+
         Sleep(100);
 
           if (GetAsyncKeyState(VK_LEFT))
@@ -47,6 +49,10 @@ main()
                 remove(x, y);
                 x--;
                 printPacman(x, y);
+                score=score+1;
+                gotoxy(0,0);
+                cout<<"SCORE: "<<score;
+
             }
             if (nextPosition == 'G')
             {
@@ -62,12 +68,16 @@ main()
                 remove(x, y);
                 x = x + 1;
                 printPacman(x, y);
+
             }
             if (nextPosition == '.')
             {
                 remove(x, y);
                 x++;
                 printPacman(x, y);
+                score=score+1;
+                gotoxy(0,0);
+                cout<<"SCORE: "<<score;
           }
             if (nextPosition == 'G')
             {
@@ -89,6 +99,9 @@ main()
                 remove(x, y);
                 y--;
                 printPacman(x, y);
+                score=score+1;
+                gotoxy(0,0);
+                cout<<"SCORE: "<<score;
             }
             if (nextPosition == 'G')
             {
@@ -110,6 +123,10 @@ main()
                 remove(x, y);
                 y++;
                 printPacman(x, y);
+                score=score+1;
+                gotoxy(0,0);
+                cout<<"SCORE: "<<score;
+
             }
 
             if (nextPosition == 'G')
@@ -162,7 +179,7 @@ main()
         if (dir == "DOWN")
         {
             char nextPosition = getCharacter(g1x, g1y + 1);
-            if (nextPosition == '%' || nextPosition == '|' || nextPosition=='#')
+            if (nextPosition == '%' || nextPosition == '|' || nextPosition == '#')
             {
                 dir = "UP";
             }
@@ -177,7 +194,7 @@ main()
         if (dir == "UP")
         {
             char nextPosition = getCharacter(g1x, g1y - 1);
-            if (nextPosition == '%' || nextPosition == '|' || nextPosition=='#')
+            if (nextPosition == '%' || nextPosition == '|' || nextPosition == '#')
             {
                 dir = "DOWN";
             }
