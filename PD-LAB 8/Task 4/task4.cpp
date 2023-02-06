@@ -1,35 +1,37 @@
-#include<iostream> 
+#include <iostream>
 
 using namespace std;
 
-main (){
+main()
+{
 
     int number;
-    cout<<"HOW MANY NUMBERS YOU WANT TO ENTER: ";
-    cin>>number;
+    cout << "HOW MANY NUMBERS YOU WANT TO ENTER: ";
+    cin >> number;
 
-    int numbers[number];;
-    bool flag=false;
+    int numbers[number];
+    ;
+    bool flag = false;
 
-for (int i =0 ; i< number ; i++){
-    cout<<"ENTER NUMBER AT INDEX "<<i<<" :";
-    cin>>numbers[i];
-    cout<<endl;
+    int remainder = 1;
 
-    if(numbers[i]==7){
-        flag=true;
-        break;
+    for (int i = 0; i < number; i++)
+    {
+        cout << "ENTER NUMBER AT INDEX " << i << " :";
+        cin >> numbers[i];
+
+        if (numbers[i] == 7 || numbers[i] % 10 == 7 || numbers[i] / 10 == 7)
+        {
+            flag = true;
+        }
+        }
+
+    if (flag == true)
+    {
+        cout << "BOOM!!!";
     }
-    else{
-        flag=false;
+    else
+    {
+        cout << "THERE IS NO 7 IN THE ARRAY";
     }
-}
-
-if(flag==true){
-            cout<<"BOOM!!!";
-
-}
-else{
-    cout<<"THERE IS NO 7 IN THE ARRAY";
-}
 }
