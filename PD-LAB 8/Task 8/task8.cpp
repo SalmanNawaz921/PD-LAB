@@ -1,5 +1,6 @@
 #include <iostream>
-#include <cmath >
+#include <cmath>
+#include <string>
 
 using namespace std;
 
@@ -17,15 +18,33 @@ main()
                         "Lock",
                         "Arabesque"};
 
-    int number;
+    string input;
     cout << "ENTER YOUR PIN: ";
-    cin >> number;
+    cin >> input;
 
     int no;
 
     int mode[4];
 
     int i = 0;
+    bool isNumber = true;
+    for (int i = 0; i < input.length(); i++)
+    {
+        if (!isdigit(input[i]))
+        {
+            isNumber = false;
+            break;
+        }
+    }
+
+    if (!isNumber)
+    {
+        cout << "INVALID INPUT" << endl;
+        return 0;
+    }
+
+    int number = stoi(input);
+
     while (i < 4)
     {
         mode[i] = number % 10;
@@ -34,7 +53,6 @@ main()
     }
 
     int f = 0;
-    bool invalid = false;
 
     for (int j = 3; j >= 0; j--)
     {
@@ -45,24 +63,10 @@ main()
             f++;
         }
 
-        else if (mode[j] != 9 && mode[i] < 10 && mode[i] >= 0 && (f == 1 || f == 2 || f == 3))
+        else if (mode[j] <= 9 && (f == 0 || f == 1 || f == 2 || f == 3))
         {
             cout << moves[mode[j] + f] << ",";
             f++;
         }
-        else if (mode[j] <= 9 && mode[j] >= 0 && f == 0)
-        {
-            cout << moves[mode[j] + f] << ",";
-            f++;
-        }
-        else if (mode[j] != 0 && mode[j] != 1 && mode[j] != 2 && mode[j] != 3 && mode[j] != 4 && mode[j] != 5 && mode[j] != 6 && mode[j] != 7 && mode[j] != 8 && mode[j] != 9)
-        {
-            invalid = true;
-            break;
-        }
-    }
-    if (invalid == true)
-    {
-        cout << "INVALID INPUT";
     }
 }

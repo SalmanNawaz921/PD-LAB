@@ -5,42 +5,31 @@ using namespace std;
 main()
 {
 
-    string word1 = "";
-    string word2 = "";
+  string word1 = "";
+  string word2 = "";
 
-    cout << "ENTER WORD 1: ";
-    getline(cin, word1);
+  cout << "ENTER WORD 1: ";
+  getline(cin, word1);
 
-    cout << "ENTER WORD 2: ";
-    getline(cin, word2);
+  cout << "ENTER WORD 2: ";
+  getline(cin, word2);
 
-    // int i = 0;
-    // int j = 0;
-    int count = 0;
-    int add=0;
-    bool flag = false;
+  int count = 0;
+  int add = 0;
+  bool flag = false;
 
-    // while (word1[i] != '\0' && word[j])
-    // {
-    //     i++;
-    // }
-    // while (word1[j] != '\0')
-    // {
-    //     j++;
-    // }
-
-    for (int i = 0; word1[i]!='\0'; i++)
+  for (int i = 0; word1[i] != '\0'; i++)
+  {
+    for (int j = 0; word2[j] != '\0'; j++)
     {
-      for(int j=0 ; word2[j]!='\0';j++){
-        if(word1[i]==word2[j]){
-            count++;
-            word2[j]='0';
-            break;
-        }
-        
+      if (word1[i] == word2[j])
+      {
+        count++;
+        word2[j] = '0';
+        break;
       }
     }
+  }
 
-
-    cout << "SIMILAR CHARACTERS IN 2 ARRAYS ARE " << count;
+  cout << "SIMILAR CHARACTERS IN 2 ARRAYS ARE " << count;
 }
